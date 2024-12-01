@@ -25,19 +25,25 @@ func ParseArgs() error {
     day, err := GetDay()
 
     Puzzle = day
+    if err != nil {
+        return err
+    }
+
+    puzzle := flag.String("puzzle", "-1","Which puzzle to run. Comma separated numbers starting at 1.")
+
+    flag.Parse()
+
+    puzzleNumber, err := strconv.Atoi(*puzzle)
 
     if err != nil {
         return err
     }
 
-    puzzle := flag.String("puzzle", "0","Which puzzle to run. Comma separated numbers starting at 1.")
-
-    flag.Parse()
-
-    Puzzle, err = strconv.Atoi(*puzzle)
-
-    if err != nil {
-        return err
+    if puzzleNumber > day {
+        Puzzle = 0
+        return fmt.Errorf("selected puzzle [%d] has not been released yet", puzzleNumber)
+    } else if puzzleNumber != -1 {
+        Puzzle = puzzleNumber
     }
 
     return nil

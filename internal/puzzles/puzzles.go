@@ -1,6 +1,10 @@
 package puzzles
 
-import "github.com/terminalPoltergeist/aoc24/pkg/day01"
+import (
+	"fmt"
+
+	"github.com/terminalPoltergeist/aoc24/pkg/day01"
+)
 
 var Solvers map[int]func() (any, error) = map[int]func() (any, error){
     1 : day01.Run,
@@ -8,6 +12,8 @@ var Solvers map[int]func() (any, error) = map[int]func() (any, error){
 
 func Solve(puzzle int) {
     if f := Solvers[puzzle]; f != nil {
-        f()
+        result, _ := f()
+
+        fmt.Printf("The solution to puzzle %d is %v\n", puzzle, result)
     }
 }
