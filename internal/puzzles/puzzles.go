@@ -6,12 +6,14 @@ import (
 	"github.com/terminalPoltergeist/aoc24/pkg/day01"
 	"github.com/terminalPoltergeist/aoc24/pkg/day02"
 	"github.com/terminalPoltergeist/aoc24/pkg/day03"
+	"github.com/terminalPoltergeist/aoc24/pkg/day04"
 )
 
 var Solvers map[int]func() (any, error) = map[int]func() (any, error){
     1 : day01.Run,
     2 : day02.Run,
     3 : day03.Run,
+    4 : day04.Run,
 }
 
 func Solve(puzzle int) {
